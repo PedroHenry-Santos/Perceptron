@@ -14,3 +14,4 @@
 #include "basic_comp.c"
 #include "loading.c"
 #include "notification.c"
+#include "close_app.c"

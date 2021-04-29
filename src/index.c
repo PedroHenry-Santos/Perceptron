@@ -12,13 +12,43 @@
 
 // Imports components
 #include "./components/main.c"
-#include "./utils/checkState.c"
+#include "./utils/stateMain.c"
 
-int main(int argc, char const *argv[]) {
+void main(int argc, char const *argv[]) {
     srand(time(NULL));
 
-    return 0;
+    TStateMain *state = malloc(sizeof(TStateMain));
+    startState(state);
+
+    Header:
+        sclean();
+        checkState(state);
+        displaysHeader(state->isBegin);
+
+        if (state->isBegin) goto ChecksPreviousFiles;
+        else if (state->newSection->std) ;
+        else if (state->previousSection->std) ;
+        else if (state->checkSection->std) ;
+        else if (state->executionSection->std) ;
+
+    ChecksPreviousFiles:
+
+    NewTrainingSection:
+
+    PreviousSectionSaved:
+
+    SelectFilePreviousSection:
+
+    RunPerceptron:
+
+    UserChoice:
+
+    EndApplication: ;
+
+    if (state != NULL) free(state);
+
+    displaysClosing();
+    getchar();
+    sclean();
 }
-
-
 
