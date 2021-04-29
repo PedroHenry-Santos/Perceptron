@@ -84,6 +84,7 @@ typedef struct stateMain {
     TSection *checkSection;
     TVFPcpt dataPerceptron;
     TDir dataDirectories;
+    int input;
 } TStateMain;
 
 // Libraries

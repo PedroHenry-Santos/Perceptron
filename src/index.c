@@ -46,6 +46,23 @@ void main(int argc, char const *argv[]) {
         goto Header;
 
     NewTrainingSection:
+        if (!state->newSection->std_init) goto Header;
+        displaysNewSection(state);
+
+        switch (state->input) {
+            case 0:
+                goto EndApplication;
+
+            case 1:
+                printf("\n\nRealiza treinamento!\n\n");
+                goto EndApplication;
+
+            default:
+                displaysWarning(state->isBegin);
+                clickToContinue();
+                state->newSection->std_init = false;
+                goto NewTrainingSection;
+        }
 
     PreviousSectionSaved:
 
