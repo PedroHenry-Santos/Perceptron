@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/PedroHenry-Santos/Perceptron/compare/v1.1.0...v1.2.0) (2021-04-29)
+
+
+### Features
+
+* **main:** adds navigation between application sections and state manipulation methods ([9e6accf](https://github.com/PedroHenry-Santos/Perceptron/commit/9e6accfdd24d1c09250db07046226dd2d0133e68))
+
 # [1.1.0](https://github.com/PedroHenry-Santos/Perceptron/compare/v1.0.0...v1.1.0) (2021-04-29)
 
 
