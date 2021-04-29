@@ -15,3 +15,4 @@
 #include "loading.c"
 #include "notification.c"
 #include "close_app.c"
+#include "interactions.c"

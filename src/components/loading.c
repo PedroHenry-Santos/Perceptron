@@ -13,6 +13,7 @@ void displaysDtLoading (void) {
     smallLine();
     printf("\n                    Buscando algum treinamento já realizado . . .                    \n");
     smallLine();
+    printf("\n");
 }
 
 /*

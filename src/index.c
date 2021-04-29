@@ -9,10 +9,12 @@
 #include <stdlib.h>
 #include <time.h>
 #include "lib/__application/startup.h"
+#include "lib/__application/manipulate_directories.h"
 
 // Imports components
 #include "./components/main.c"
 #include "./utils/stateMain.c"
+#include "./utils/mainBlockTools.c"
 
 void main(int argc, char const *argv[]) {
     srand(time(NULL));
@@ -26,12 +28,22 @@ void main(int argc, char const *argv[]) {
         displaysHeader(state->isBegin);
 
         if (state->isBegin) goto ChecksPreviousFiles;
-        else if (state->newSection->std) ;
-        else if (state->previousSection->std) ;
-        else if (state->checkSection->std) ;
-        else if (state->executionSection->std) ;
+        else if (state->newSection->std) goto NewTrainingSection;
+        else if (state->previousSection->std) goto PreviousSectionSaved;
+        else if (state->checkSection->std) goto UserChoice;
+        else if (state->executionSection->std) goto RunPerceptron;
 
     ChecksPreviousFiles:
+        displaysDtLoading();
+        sleep(SECONDS);
+
+        state->isPreviousSection = checkDirectory();
+        state->newSection->std = !state->isPreviousSection ? true : false;
+        state->previousSection->std = state->isPreviousSection ? true : false;
+
+        checkState(state);
+        clickToContinue();
+        goto Header;
 
     NewTrainingSection:
 

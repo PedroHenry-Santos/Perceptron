@@ -1,6 +1,6 @@
 /*
 * Autor: Pedro Henrique Viana dos Santos.
-* Purpose: Defines types.
+* Purpose: Defines types and definitions.
 * Language: C.
 */
 
@@ -17,6 +17,7 @@ typedef int bool;
 // Application definitions
 #define USERNAME_SIZE 30
 #define TABLE_TITLE 256
+#define SECONDS 5
 
 // Types
 
