@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/PedroHenry-Santos/Perceptron/compare/v1.2.0...v1.3.0) (2021-04-29)
+
+
+### Features
+
+* **main:** adds initial verification of previously performed training and status update ([293e5f4](https://github.com/PedroHenry-Santos/Perceptron/commit/293e5f489b0eeeec8f5ab4309968d3a1ba17f617))
+
 # [1.2.0](https://github.com/PedroHenry-Santos/Perceptron/compare/v1.1.0...v1.2.0) (2021-04-29)
 
 
