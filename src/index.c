@@ -65,6 +65,29 @@ void main(int argc, char const *argv[]) {
         }
 
     PreviousSectionSaved:
+        if (!state->previousSection->std_init) goto Header;
+        displaysPreviousSection(state);
+
+        switch (state->input) {
+            case 0:
+                goto EndApplication;
+
+            case 1:
+                state->executionSection->std_init = false;
+                state->previousSection->std_finish = true;
+                goto SelectFilePreviousSection;
+
+            case 2:
+                state->previousSection->std_finish = true;
+                state->isPreviousSection = false;
+                goto Header;
+
+            default:
+                displaysWarning(state->isBegin);
+                clickToContinue();
+                state->previousSection->std_init = false;
+                goto PreviousSectionSaved;
+        }
 
     SelectFilePreviousSection:
 

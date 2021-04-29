@@ -22,6 +22,12 @@ void displaysNewSection (TStateMain *__state);
 * This function returns nothing.
 */
 void displaysWarning (bool __state);
+/*
+* Print user options when resuming a previous section.
+*
+* This function returns nothing.
+*/
+void displaysPreviousSection (TStateMain *__state);
 
 void clickToContinue () {
     printf("\n\n\n\n                            Aperte ");
@@ -46,5 +52,20 @@ void displaysWarning (bool __state) {
     displaysHeader(__state);
     printf(ANSI C_RED END"  ✖ "RESET);
     printf("Escolha invalida.");
+}
+
+void displaysPreviousSection (TStateMain *__state) {
+    printf(ANSI C_BLUE END"\n\n ☛ "RESET);
+    printf("Foram encontrados treinamentos anteriores.\n\n");
+    printf(" Gostaria de utilizar algum?\n\n");
+    printf(ANSI C_RED AND BOLD END" IMPORTANTE:"RESET);
+    printf(" Caso comece outro treinamento o atual será descartado!\n");
+    printf(ANSI C_BLUE_LIGTH END"    ( 1 ) - Sim, mostre-me eles.\n");
+    printf("    ( 2 ) - Não, começar novo.\n");
+    printf("    ( 0 ) - Encerrar programa.\n"RESET);
+    printf(ANSI C_BLUE END"      ❯     "RESET);
+    scanf("%d", &__state->input);
+    fclean(stdin);
+    sclean();
 }
 
