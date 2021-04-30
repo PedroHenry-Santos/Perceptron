@@ -157,19 +157,22 @@ void main(int argc, char const *argv[]) {
     EndApplication: ;
 
     if (state != NULL) {
-        if (data->w_current != NULL) free(data->w_current);
-        if (data != NULL) free(data);
-        if (state->dataDirectories->aux != NULL) free(state->dataDirectories->aux);
-        if (state->dataDirectories->file) free(state->dataDirectories->file);
-        if (state->dataDirectories->list) free(state->dataDirectories->list);
-        if (state->dataDirectories) free(state->dataDirectories);
+        if (state->dataDirectories != NULL) {
+            if (state->dataDirectories->aux != NULL) free(state->dataDirectories->aux);
+            if (state->dataDirectories->file != NULL) free(state->dataDirectories->file);
+            if (state->dataDirectories->list != NULL) free(state->dataDirectories->list);
+            free(state->dataDirectories);
+        }
         free(state->newSection);
         free(state->previousSection);
         free(state->executionSection);
         free(state->checkSection);
         free(state);
     }
-    if (data != NULL) free(data);
+    if (data != NULL) {
+        if (data->w_current != NULL) free(data->w_current);
+        free(data);
+    }
 
     displaysClosing();
     getchar();
