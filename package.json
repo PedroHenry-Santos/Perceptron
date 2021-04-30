@@ -1,7 +1,7 @@
 {
   "name": "Perceptron",
   "version": "1.4.0",
-  "main": "index.c",
+  "main": "src/index.c",
   "license": "MIT",
   "scripts": {
     "release": "semantic-release --no-ci"

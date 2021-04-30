@@ -32,7 +32,7 @@ typedef int bool;
 */
 typedef struct perceptron {
     char username[USERNAME_SIZE];
-    int size, era;
+    int size, era, grupOne, grupTwo;
     float *w_current, *w_init;
 } TPcpt;
 
@@ -59,7 +59,7 @@ typedef union samplesTypes {
 * the perceptron.
 */
 typedef struct valuesForPerceptron {
-    int generatedResponse, nOfSamples, nOfFeatures, *realResponses, grupOne, grupTwo;
+    int generatedResponse, nOfSamples, nOfFeatures, *realResponses;
     float analysis, learningRate;
     TSamples *data;
     bool error;

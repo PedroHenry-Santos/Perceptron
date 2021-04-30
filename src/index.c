@@ -10,6 +10,7 @@
 #include <time.h>
 #include "lib/__application/startup.h"
 #include "lib/__application/manipulate_directories.h"
+#include "lib/__application/math_application.h"
 
 // Imports components
 #include "./components/main.c"
