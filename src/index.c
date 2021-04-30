@@ -90,7 +90,7 @@ void main(int argc, char const *argv[]) {
         }
 
     SelectFilePreviousSection:
-        displaSelectFilePreviousSectionysSelectFilePreviousSection(state);
+        displaysSelectFilePreviousSection(state);
 
         if (state->input < ONE || state->input > state->dataDirectories->fileSize) {
             displaysWarning(state->isBegin);
@@ -118,23 +118,55 @@ void main(int argc, char const *argv[]) {
         }
 
     RunPerceptron:
+        free(state->dataDirectories->aux);
+        free(state->dataDirectories->file);
+        free(state->dataDirectories->fileSize);
+        free(state->dataDirectories);
         if (!state->executionSection->std_init) goto Header;
         printf(" Estamos prontos!\n\n");
         printf(" Informe as %d amostras a serem utilizadas:\n", data->size - ONE);
         runPerceptron(data, state);
-        printf("\n A amostra pertence ao grupo %d.", state->dataPerceptron->generatedResponse);
         clickToContinue();
 
         state->checkSection->std_init = false;
         state->executionSection->std_finish = true;
         goto UserChoice;
 
-
     UserChoice:
+        displaysUserChoice(state);
+
+        switch (state->input) {
+            case ONE:
+                state->executionSection->std_init = false;
+                goto RunPerceptron;
+
+            case TWO:
+                state->checkSection->std_finish = true;
+                free(data->w_current);
+                free(data);
+                goto Header;
+
+            default:
+                displaysWarning(state->isBegin);
+                clickToContinue();
+                state->checkSection->std_init = false;
+                goto UserChoice;
 
     EndApplication: ;
 
-    if (state != NULL) free(state);
+    if (state != NULL) {
+        if (data->w_current != NULL) free(data->w_current);
+        if (data != NULL) free(data);
+        if (state->dataDirectories->aux != NULL) free(state->dataDirectories->aux);
+        if (state->dataDirectories->file) free(state->dataDirectories->file);
+        if (state->dataDirectories->fileSize) free(state->dataDirectories->fileSize);
+        if (state->dataDirectories) free(state->dataDirectories);
+        free(state->newSection);
+        free(state->previousSection);
+        free(state->executionSection);
+        free(state->checkSection);
+        free(state);
+    }
     if (data != NULL) free(data);
 
     displaysClosing();

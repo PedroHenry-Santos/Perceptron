@@ -76,8 +76,9 @@ void runPerceptron (TPcpt *__data, TStateMain *__state) {
     }
 
     __state->dataPerceptron->analysis = vector_multiplication(__state->dataPerceptron->data->samples, __data->w_current, __data->size);
+    __state->dataPerceptron->generatedResponse = activation_function(__state->dataPerceptron->analysis);
+    printf("\n A amostra pertence ao grupo %d.", __state->dataPerceptron->generatedResponse);
     free(__state->dataPerceptron->data->samples);
     free(__state->dataPerceptron->data);
     free(__state->dataPerceptron);
-    __state->dataPerceptron->generatedResponse = activation_function(__state->dataPerceptron->analysis);
 }

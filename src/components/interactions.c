@@ -35,6 +35,12 @@ void displaysPreviousSection (TStateMain *__state);
 * This function returns nothing.
 */
 void displaysSelectFilePreviousSection (TStateMain *__state);
+/*
+* Imprime opções ao usuarios e registra sua escolha.
+*
+* Esta função não retorna nada.
+*/
+void displaysUserChoice (TStateMain *__state);
 
 void clickToContinue () {
     fclean(stdin);
@@ -95,5 +101,16 @@ void displaysSelectFilePreviousSection (TStateMain *__state) {
     printf(ANSI C_GREEN END"      ❯  "RESET);
     scanf("%d", &__state->input);
     cleanBuffer();
+}
+
+void displaysUserChoice (TStateMain *__state) {
+    printf(ANSI C_BLUE END"\n\n ☛ "RESET);
+    printf("O que gostaria de fazer?\n");
+    printf(ANSI C_BLUE_LIGTH END"    ( 1 ) - Verificar outra amostra.\n");
+    printf(ANSI C_BLUE_LIGTH END"    ( 2 ) - Voltar menu inicial.\n");
+    printf(ANSI C_BLUE END"      ❯     "RESET);
+    scanf("%d", &__state->input);
+    fclean(stdin);
+    sclean();
 }
 
