@@ -120,7 +120,7 @@ void main(int argc, char const *argv[]) {
     RunPerceptron:
         free(state->dataDirectories->aux);
         free(state->dataDirectories->file);
-        free(state->dataDirectories->fileSize);
+        free(state->dataDirectories->list);
         free(state->dataDirectories);
         if (!state->executionSection->std_init) goto Header;
         printf(" Estamos prontos!\n\n");
@@ -151,6 +151,7 @@ void main(int argc, char const *argv[]) {
                 clickToContinue();
                 state->checkSection->std_init = false;
                 goto UserChoice;
+        }
 
     EndApplication: ;
 
@@ -159,7 +160,7 @@ void main(int argc, char const *argv[]) {
         if (data != NULL) free(data);
         if (state->dataDirectories->aux != NULL) free(state->dataDirectories->aux);
         if (state->dataDirectories->file) free(state->dataDirectories->file);
-        if (state->dataDirectories->fileSize) free(state->dataDirectories->fileSize);
+        if (state->dataDirectories->list) free(state->dataDirectories->list);
         if (state->dataDirectories) free(state->dataDirectories);
         free(state->newSection);
         free(state->previousSection);

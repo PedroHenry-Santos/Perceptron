@@ -41,6 +41,12 @@ void displaysSelectFilePreviousSection (TStateMain *__state);
 * Esta função não retorna nada.
 */
 void displaysUserChoice (TStateMain *__state);
+/*
+* Formats the string for printing.
+*
+* This function returns nothing.
+*/
+unsigned char *formatsText (unsigned char *__text);
 
 void clickToContinue () {
     fclean(stdin);
@@ -83,6 +89,14 @@ void displaysPreviousSection (TStateMain *__state) {
     sclean();
 }
 
+unsigned char *formatsText (unsigned char *__text) {
+    int i, size = strcspn(__text, ".bin");
+    unsigned char *tmp = malloc((size + 1) * sizeof(unsigned char));
+    for (i = 0; i < size; i++) {*(tmp + i) = *(__text + i);}
+    tmp[i] = '\0';
+    return tmp;
+}
+
 void displaysSelectFilePreviousSection (TStateMain *__state) {
     __state->dataDirectories = malloc(sizeof(TDir));
     __state->dataDirectories->list = ltfp("./data");
@@ -95,12 +109,12 @@ void displaysSelectFilePreviousSection (TStateMain *__state) {
 
     for (int i = ZERO; i < __state->dataDirectories->fileSize; i++) {
         printf("    (%d) - ", i + ONE);
-        printf(ANSI C_BLUE_LIGTH AND UNDERLINE END"Realizado por %s"RESET, formatText(*(__state->dataDirectories->list + i)));
+        printf(ANSI C_BLUE_LIGTH AND UNDERLINE END"Realizado por %s"RESET, formatsText(*(__state->dataDirectories->list + i)));
         printf("\n");
     }
     printf(ANSI C_GREEN END"      ❯  "RESET);
     scanf("%d", &__state->input);
-    cleanBuffer();
+    fclean(stdin);
 }
 
 void displaysUserChoice (TStateMain *__state) {
