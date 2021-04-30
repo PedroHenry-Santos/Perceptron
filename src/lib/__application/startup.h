@@ -61,7 +61,7 @@ typedef union samplesTypes {
 typedef struct valuesForPerceptron {
     int generatedResponse, nOfSamples, nOfFeatures, *realResponses, grupOne, grupTwo;
     float analysis, learningRate;
-    TSamples data;
+    TSamples *data;
     bool error;
 } TVFPcpt;
 
@@ -87,7 +87,7 @@ typedef struct stateMain {
     TSection *previousSection;
     TSection *executionSection;
     TSection *checkSection;
-    TVFPcpt dataPerceptron;
+    TVFPcpt *dataPerceptron;
     TDir *dataDirectories;
     int input;
 } TStateMain;

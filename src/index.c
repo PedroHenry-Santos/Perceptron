@@ -118,6 +118,17 @@ void main(int argc, char const *argv[]) {
         }
 
     RunPerceptron:
+        if (!state->executionSection->std_init) goto Header;
+        printf(" Estamos prontos!\n\n");
+        printf(" Informe as %d amostras a serem utilizadas:\n", data->size - ONE);
+        runPerceptron(data, state);
+        printf("\n A amostra pertence ao grupo %d.", state->dataPerceptron->generatedResponse);
+        clickToContinue();
+
+        state->checkSection->std_init = false;
+        state->executionSection->std_finish = true;
+        goto UserChoice;
+
 
     UserChoice:
 

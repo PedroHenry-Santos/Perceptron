@@ -1,3 +1,12 @@
+# [1.4.0](https://github.com/PedroHenry-Santos/Perceptron/compare/v1.3.0...v1.4.0) (2021-04-30)
+
+
+### Features
+
+* **main:** adds a module that makes the data from the previous section available for use ([ba9d0ae](https://github.com/PedroHenry-Santos/Perceptron/commit/ba9d0ae9338f542cbcae34b2bcb71837e644f1f3))
+* **main:** adds options from the new state-changing training section ([692f0fe](https://github.com/PedroHenry-Santos/Perceptron/commit/692f0fef12beedfa2c4d6545fcd056cd65d06f90))
+* **main:** adds options from the previous started section and change of state ([5d173b1](https://github.com/PedroHenry-Santos/Perceptron/commit/5d173b101b522e5642e400666987571d92277ce1))
+
 # [1.3.0](https://github.com/PedroHenry-Santos/Perceptron/compare/v1.2.0...v1.3.0) (2021-04-29)
 
 

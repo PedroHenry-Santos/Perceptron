@@ -58,3 +58,26 @@ bool fillsPreviousSectionValues (TPcpt *__data, TStateMain *__state) {
     fclose(fp);
     return false;
 }
+
+/*
+* Request the user's samples and perform the classification.
+*
+* This function returns nothing.
+*/
+void runPerceptron (TPcpt *__data, TStateMain *__state) {
+    __state->dataPerceptron = malloc(sizeof(TVFPcpt));
+    __state->dataPerceptron->data = malloc(sizeof(TSamples));
+    __state->dataPerceptron->data->samples = malloc(__data->size * sizeof(float));
+    __state->dataPerceptron->data->samples[ZERO] = -ONE;
+
+    for (int i = ONE; i < __data->size; i++) {
+        printf("\n   (%d) -->     ", i);
+        scanf("%f", &__state->dataPerceptron->data->samples[i]);
+    }
+
+    __state->dataPerceptron->analysis = vector_multiplication(__state->dataPerceptron->data->samples, __data->w_current, __data->size);
+    free(__state->dataPerceptron->data->samples);
+    free(__state->dataPerceptron->data);
+    free(__state->dataPerceptron);
+    __state->dataPerceptron->generatedResponse = activation_function(__state->dataPerceptron->analysis);
+}
