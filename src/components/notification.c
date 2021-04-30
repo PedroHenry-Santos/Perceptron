@@ -102,3 +102,14 @@ void displaysNoFile () {
     printf(ANSI BOLD END"ENTER"RESET);
     printf(" para finalizar.");
 }
+
+/*
+* Prints the name of the file chosen by the user.
+*
+* This function returns nothing.
+*/
+void displaysChosenOption (TStateMain *__state) {
+    printf(ANSI C_GREEN END"\n * O arquivo escolhido foi o ");
+    printf(ANSI BOLD END"%s"RESET, __state->dataDirectories->aux);
+    printf(ANSI C_GREEN END" *"RESET);
+}

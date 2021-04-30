@@ -28,8 +28,16 @@ void displaysWarning (bool __state);
 * This function returns nothing.
 */
 void displaysPreviousSection (TStateMain *__state);
+/*
+* Print the name of all files in the 'data' directory and provides
+* the user as an option.
+*
+* This function returns nothing.
+*/
+void displaysSelectFilePreviousSection (TStateMain *__state);
 
 void clickToContinue () {
+    fclean(stdin);
     printf("\n\n\n\n                            Aperte ");
     printf(ANSI BOLD END"ENTER"RESET);
     printf(" para continuar.");
@@ -67,5 +75,25 @@ void displaysPreviousSection (TStateMain *__state) {
     scanf("%d", &__state->input);
     fclean(stdin);
     sclean();
+}
+
+void displaysSelectFilePreviousSection (TStateMain *__state) {
+    __state->dataDirectories = malloc(sizeof(TDir));
+    __state->dataDirectories->list = ltfp("./data");
+
+    sclean();
+    displaysHeader(__state->isBegin);
+    printf(ANSI C_BLUE END"\n\n ☛ "RESET);
+    printf("Foi encontrado os seguintes treinamentos realizados:\n\n");
+    __state->dataDirectories->fileSize = ctfp("./data");
+
+    for (int i = ZERO; i < __state->dataDirectories->fileSize; i++) {
+        printf("    (%d) - ", i + ONE);
+        printf(ANSI C_BLUE_LIGTH AND UNDERLINE END"Realizado por %s"RESET, formatText(*(__state->dataDirectories->list + i)));
+        printf("\n");
+    }
+    printf(ANSI C_GREEN END"      ❯  "RESET);
+    scanf("%d", &__state->input);
+    cleanBuffer();
 }
 

@@ -16,8 +16,13 @@ typedef int bool;
 
 // Application definitions
 #define USERNAME_SIZE 30
+#define FILE_NAME 30
+#define PATH_NAME_SIZE 100
 #define TABLE_TITLE 256
 #define SECONDS 5
+#define ZERO 0
+#define ONE 1
+#define TWO 2
 
 // Types
 
@@ -83,7 +88,7 @@ typedef struct stateMain {
     TSection *executionSection;
     TSection *checkSection;
     TVFPcpt dataPerceptron;
-    TDir dataDirectories;
+    TDir *dataDirectories;
     int input;
 } TStateMain;
 

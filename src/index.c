@@ -18,7 +18,7 @@
 
 void main(int argc, char const *argv[]) {
     srand(time(NULL));
-
+    TPcpt *data = NULL;
     TStateMain *state = malloc(sizeof(TStateMain));
     startState(state);
 
@@ -50,10 +50,10 @@ void main(int argc, char const *argv[]) {
         displaysNewSection(state);
 
         switch (state->input) {
-            case 0:
+            case ZERO:
                 goto EndApplication;
 
-            case 1:
+            case ONE:
                 printf("\n\nRealiza treinamento!\n\n");
                 goto EndApplication;
 
@@ -69,15 +69,15 @@ void main(int argc, char const *argv[]) {
         displaysPreviousSection(state);
 
         switch (state->input) {
-            case 0:
+            case ZERO:
                 goto EndApplication;
 
-            case 1:
+            case ONE:
                 state->executionSection->std_init = false;
                 state->previousSection->std_finish = true;
                 goto SelectFilePreviousSection;
 
-            case 2:
+            case TWO:
                 state->previousSection->std_finish = true;
                 state->isPreviousSection = false;
                 goto Header;
@@ -90,6 +90,32 @@ void main(int argc, char const *argv[]) {
         }
 
     SelectFilePreviousSection:
+        displaSelectFilePreviousSectionysSelectFilePreviousSection(state);
+
+        if (state->input < ONE || state->input > state->dataDirectories->fileSize) {
+            displaysWarning(state->isBegin);
+            clickToContinue();
+            goto SelectFilePreviousSection;
+        } else {
+            if (strlen ( *(state->dataDirectories->list + (state->input - ONE)) ) > FILE_NAME) {
+                printf ("O nome do arquivo é maior que o suportando");
+                clickToContinue();
+                goto SelectFilePreviousSection;
+            } else {
+                state->dataDirectories->file = *(state->dataDirectories->list + (state->input - ONE));
+                state->dataDirectories->aux = malloc(strlen(state->dataDirectories->file) * sizeof(unsigned char));
+                strcpy(state->dataDirectories->aux, state->dataDirectories->file);
+                state->dataDirectories->aux[strcspn(state->dataDirectories->aux, "\n")] = ZERO;
+                strcat(state->dataDirectories->aux, ".bin\0");
+                displaysChosenOption(state);
+                clickToContinue();
+                if (data == NULL) {
+                    data = malloc(sizeof(TPcpt));
+                    if (fillsPreviousSectionValues(data, state)) goto EndApplication;
+                }
+                goto RunPerceptron;
+            }
+        }
 
     RunPerceptron:
 
@@ -98,6 +124,7 @@ void main(int argc, char const *argv[]) {
     EndApplication: ;
 
     if (state != NULL) free(state);
+    if (data != NULL) free(data);
 
     displaysClosing();
     getchar();
