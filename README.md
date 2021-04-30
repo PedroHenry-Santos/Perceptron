@@ -5,6 +5,8 @@
 
 ![Badge](https://img.shields.io/github/license/PedroHenry-Santos/AluraQuiz-TW3?style=flat&label=LICENSE)
 ![Badge](https://img.shields.io/badge/C-v9.3.0-blue?style=flat&logo=c&link=https://nodgccjs.org/pt-br/)
+![Badge](https://img.shields.io/github/v/release/PedroHenry-Santos/Perceptron)
+![Badge](https://img.shields.io/github/repo-size/PedroHenry-Santos/Perceptron)
 
 # :page_with_curl: Índice
 
