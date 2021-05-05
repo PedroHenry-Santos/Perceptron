@@ -23,6 +23,12 @@ void displaysNewSection (TStateMain *__state);
 */
 void displaysWarning (bool __state);
 /*
+* Warns if user enters invalid option in training.
+*
+* This function returns nothing.
+*/
+void displaysPerceptronWarning ();
+/*
 * Print user options when resuming a previous section.
 *
 * This function returns nothing.
@@ -70,6 +76,13 @@ void displaysNewSection (TStateMain *__state) {
 void displaysWarning (bool __state) {
     sclean();
     displaysHeader(__state);
+    printf(ANSI C_RED END"  ✖ "RESET);
+    printf("Escolha invalida.");
+}
+
+void displaysPerceptronWarning () {
+    sclean();
+    displaysTrainingWarning();
     printf(ANSI C_RED END"  ✖ "RESET);
     printf("Escolha invalida.");
 }

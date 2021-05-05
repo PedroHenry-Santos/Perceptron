@@ -17,6 +17,9 @@
 #include "./utils/stateMain.c"
 #include "./utils/mainBlockTools.c"
 
+// Train perceptron
+#include "perceptron.c"
+
 void main(int argc, char const *argv[]) {
     srand(time(NULL));
     TPcpt *data = NULL;
@@ -55,7 +58,7 @@ void main(int argc, char const *argv[]) {
                 goto EndApplication;
 
             case ONE:
-                printf("\n\nRealiza treinamento!\n\n");
+                trainPerceptron();
                 goto EndApplication;
 
             default:

@@ -113,3 +113,22 @@ void displaysChosenOption (TStateMain *__state) {
     printf(ANSI BOLD END"%s"RESET, __state->dataDirectories->aux);
     printf(ANSI C_GREEN END" *"RESET);
 }
+/*
+* Prints that there are no files in the directory.
+*
+* This function returns nothing.
+*/
+void displaysThereNothingDirectory () {
+    printf("          -------------------------------------------------------------          \n");
+    printf(ANSI BOLD AND C_RED END"           Não há nenhum arquivo" RESET);
+    printf(" dentro do diretorio " RESET);
+    printf(ANSI BOLD END"[public/upload]"RESET);
+    printf(", coloque          \n");
+    printf("           o arquivo com as amostras que serão utilizadas antes de          \n");
+    printf("           tentar novamente.          \n");
+    printf("          -------------------------------------------------------------          \n"RESET);
+    printf("\n\n\n\n                       Aperte ");
+    printf(ANSI BOLD END"ENTER"RESET);
+    printf(" para finalizar.");
+    getchar();
+}

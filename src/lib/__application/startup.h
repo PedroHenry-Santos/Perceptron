@@ -92,6 +92,13 @@ typedef struct stateMain {
     int input;
 } TStateMain;
 
+typedef struct stateTrainPerceptron {
+    TVFPcpt *utilsPerceptron;
+    TDir *dataDirectories;
+    char flag;
+    int input, i, j, verif;
+} TStateTPerc;
+
 // Libraries
 #include <stdio.h>
 #include <stdlib.h>
